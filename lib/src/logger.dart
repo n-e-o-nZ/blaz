@@ -11,13 +11,15 @@ class Logger{
   void req(dynamic text) {_formatter("req", text.toString());}
 
   void _formatter(dynamic type, String text){
-    if(type=="i") stdout.write(Colorize(type+"nfo:")..bold()..white()..bgGreen());
-    if(type=="l") stdout.write(Colorize(type+"og:")..bold()..white()..bgDarkGray());
-    if(type=="w") stdout.write(Colorize(type+"arning:")..bold()..white()..bgYellow());
-    if(type=="e") stdout.write(Colorize(type+"rror:")..bold()..white()..bgRed());
-    if(type=="res") stdout.write(Colorize(type+"ponse:")..bold()..white()..bgBlue());
-    if(type=="req") stdout.write(Colorize(type+"est:")..bold()..white()..bgCyan());
+    if(type=="i") stdout.write(Colorize(_time()+type+"nfo:")..bold()..white()..bgGreen());
+    if(type=="l") stdout.write(Colorize(_time()+type+"og:")..bold()..white()..bgDarkGray());
+    if(type=="w") stdout.write(Colorize(_time()+type+"arning:")..bold()..white()..bgYellow());
+    if(type=="e") stdout.write(Colorize(_time()+type+"rror:")..bold()..white()..bgRed());
+    if(type=="res") stdout.write(Colorize(_time()+type+"ponse:")..bold()..white()..bgBlue());
+    if(type=="req") stdout.write(Colorize(_time()+type+"est:")..bold()..white()..bgCyan());
     
     print(' '+text);
   }
+
+  String _time() => "[${DateTime.now().hour..toString()}:${DateTime.now().minute..toString()}:${DateTime.now().second..toString()}] ";
 }
